@@ -1,5 +1,5 @@
 # Import fungsi login dari modul login
-from login import login
+from F02_Login import login
 
 # Fungsi logout
 def logout():
