@@ -70,42 +70,7 @@ def SimpanData(data):
             row_as_string = [str(item) for item in row]
             csvfile.write(";".join(row_as_string) + "\n")
 
-# Fungsi untuk mengenkripsi kata sandi
-def encrypt_password(password):
-    encrypted_password = ""
-    vowel_chars = 'aiueo'
-    consonant_chars = 'bcdfghjklmnpqrstvwxyz'
-    substitution_table = {'a': '@', 'i': '#', 'u': '$', 'e': '%', 'o': '&'}
-
-    for char in password:
-        if char.lower() in vowel_chars:
-            encrypted_password += substitution_table.get(char.lower(), char.lower())
-        elif char.lower() in consonant_chars:
-            encrypted_password += consonant_chars[(consonant_chars.index(char.lower()) + 1) % len(consonant_chars)]
-        else:
-            encrypted_password += char
-
-    return encrypted_password
-
-# Fungsi untuk mendekripsi kata sandi
-def decrypt_password(encrypted_password):
-    decrypted_password = ""
-    vowel_chars = 'aiueo'
-    consonant_chars = 'bcdfghjklmnpqrstvwxyz'
-    substitution_table = {'@': 'a', '#': 'i', '$': 'u', '%': 'e', '&': 'o'}
-
-    for char in encrypted_password:
-        if char.lower() in substitution_table:
-            decrypted_password += substitution_table[char.lower()]
-        elif char.lower() in consonant_chars:
-            decrypted_password += consonant_chars[(consonant_chars.index(char.lower()) - 1) % len(consonant_chars)]
-        else:
-            decrypted_password += char
-
-    return decrypted_password
-
 # Registrasi
-#registrasi
 def Registrasi(data, monster_data):
     print()
     print(
