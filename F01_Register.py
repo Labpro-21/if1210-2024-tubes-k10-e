@@ -29,38 +29,52 @@
 def BerikanData():
     user_data = []
     with open("user.csv", "r", newline="") as csvfile:
-        next(csvfile)  # Lewati baris header
-        for line in csvfile:
-            fields = []
-            field = ""
-            for char in line.strip():
-                if char == ";":
-                    fields.append(field)
-                    field = ""
-                else:
-                    field += char
-            fields.append(field)  # Menambahkan field terakhir
-            user_data.append(fields)
+        next(csvfile)  # Lewati baris header2
+        line = ""
+        while True:
+            char = csvfile.read(1)
+            if char == "":
+                break
+            elif char == "\n":
+                fields = []
+                field = ""
+                for char in line:
+                    if char == ";":
+                        fields.append(field)
+                        field = ""
+                    else:
+                        field += char
+                fields.append(field)  # Menambahkan field terakhir
+                user_data.append(fields)
+                line = ""
+            else:
+                line += char
     return user_data
 
-# Memuat data monster dari CSV
 def BerikanMonster():
     monster_data = []
     with open("monster.csv", "r", newline="") as csvfile:
         next(csvfile)  # Lewati baris header
-        for line in csvfile:
-            fields = []
-            field = ""
-            for char in line.strip():
-                if char == ";":
-                    fields.append(field)
-                    field = ""
-                else:
-                    field += char
-            fields.append(field)  # Menambahkan field terakhir
-            monster_data.append(fields)
+        line = ""
+        while True:
+            char = csvfile.read(1)
+            if char == "":
+                break
+            elif char == "\n":
+                fields = []
+                field = ""
+                for char in line:
+                    if char == ";":
+                        fields.append(field)
+                        field = ""
+                    else:
+                        field += char
+                fields.append(field)  # Menambahkan field terakhir
+                monster_data.append(fields)
+                line = ""
+            else:
+                line += char
     return monster_data
-
 
 # Fungsi untuk menyimpan data ke CSV
 def SimpanData(data):
@@ -371,10 +385,6 @@ def TambahAkunBaru(usernamePendaftar, passwordPendaftar, monster_data):
     # Memilih monster
     monster_id = PilihMonster(monster_data)
     monster_type = monster_data[monster_id][1]
-    monster_atk_power = monster_data[monster_id][2]
-    monster_def_power = monster_data[monster_id][3]
-    monster_hp = monster_data[monster_id][4]
-    data[-1].extend([monster_id, monster_type, monster_atk_power, monster_def_power, monster_hp])
 
     SimpanData(data)
     print("Registrasi berhasil untuk username", usernamePendaftar, "dengan monster", monster_type)
