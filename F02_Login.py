@@ -1,20 +1,4 @@
-# Memuat data pengguna dari CSV
-def BerikanData():
-    user_data = []
-    with open("user.csv", "r", newline="") as csvfile:
-        next(csvfile)  # Lewati baris header
-        for line in csvfile:
-            fields = []
-            field = ""
-            for char in line.strip():
-                if char == ";":
-                    fields.append(field)
-                    field = ""
-                else:
-                    field += char
-            fields.append(field)  # Menambahkan field terakhir
-            user_data.append(fields)
-    return user_data
+from F01_Register import *
 
 # Fungsi untuk login
 def login():
@@ -22,13 +6,13 @@ def login():
     usernamePengguna = input("Masukkan username : ")
     passwordPengguna = input("Masukkan password : ")
 
-    matriks_user = BerikanData()
+    matriks_user = BerikanData("user.csv")
 
     check_username = False
     check_pw = False
     
     for user in matriks_user:
-        if len(user) >= 3:  # Pastikan ada cukup banyak kolom dalam baris pengguna
+        if len(user) >= 3:  # Pastikan ada cukup banyak kolom dalam baris data yang diberikan
             if usernamePengguna == user[1]:
                 check_username = True
                 if passwordPengguna == user[2]:
