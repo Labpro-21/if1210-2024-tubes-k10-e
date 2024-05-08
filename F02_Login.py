@@ -1,4 +1,18 @@
-from F01_Register import *
+from F01_Register import BerikanData
+
+# Fungsi untuk mendapatkan role
+def get_user_role(username):
+    # Memuat data pengguna dari file CSV
+    user_data = BerikanData("user.csv")
+
+    # Mencari peran pengguna berdasarkan username
+    for user in user_data:
+        if len(user) >= 4:  # Pastikan ada cukup banyak kolom dalam baris pengguna
+            if username == user[1]:
+                return user[3]  # Mengembalikan peran pengguna
+
+    # Jika username tidak ditemukan, kembalikan None
+    return None
 
 # Fungsi untuk login
 def login():
