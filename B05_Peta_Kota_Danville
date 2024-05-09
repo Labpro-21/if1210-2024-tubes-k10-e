@@ -1,0 +1,106 @@
+from A_Functions import ManualSplit
+
+# OOP on the Agent and the Map!
+class Agent:
+    def __init__(self, name, position):
+        self.name = name
+        self.position = position   
+class Map:
+    def __init__(self, map_data):
+        self.map_data = map_data
+        self.agent = Agent("Purry", (1, 1))
+
+# Ubah string agar bisa dibaca sistem!
+    def print_map(self):
+        for i in range(len(self.map_data)):
+            for j in range(len(self.map_data[i])):
+                if (i, j) == self.agent.position:
+                    print('P', end='')
+                else:
+                    print(self.map_data[i][j], end='')
+            print()
+
+    def move(self, direction):
+        x, y = self.agent.position
+        direction = direction.lower()  # Mengubah input menjadi lowercase
+        if direction == "w" and x > 0 and self.map_data[x-1][y] not in ['*', 'X', 'L', 'A', 'S']:
+            self.agent.position = (x-1, y)
+        elif direction == "s" and x < len(self.map_data)-1 and self.map_data[x+1][y] not in ['*', 'X', 'L', 'A', 'S']:
+            self.agent.position = (x+1, y)
+        elif direction == "a" and y > 0 and self.map_data[x][y-1] not in ['*', 'X', 'L', 'A', 'S']:
+            self.agent.position = (x, y-1)
+        elif direction == "d" and y < len(self.map_data[0])-1 and self.map_data[x][y+1] not in ['*', 'X', 'L', 'A', 'S']:
+            self.agent.position = (x, y+1)
+        print(f"Agent {self.agent.name} bergerak ke {direction.upper()} ke posisi {self.agent.position}")
+
+    def check_location(self):
+        x, y = self.agent.position
+        places = {'S': 'Shop', 'A': 'Arena', 'L': 'Laboratory', 'X': 'Bush'}
+
+    # Cek ke kanan
+        if y + 1 < len(self.map_data[0]) and self.map_data[x][y + 1] in places:
+          place = self.map_data[x][y + 1]
+          print(f"Agent Purry akan mengakses {places[place]}, karena berada pada posisi yang adjacent dengan {places[place]} ({place})")
+    # Cek ke kiri
+        elif y - 1 >= 0 and self.map_data[x][y - 1] in places:
+          place = self.map_data[x][y - 1]
+          print(f"Agent Purry akan mengakses {places[place]}, karena berada pada posisi yang adjacent dengan {places[place]} ({place})")
+    # Cek ke bawah
+        elif x + 1 < len(self.map_data) and self.map_data[x + 1][y] in places:
+           place = self.map_data[x + 1][y]
+           print(f"Agent Purry akan mengakses {places[place]}, karena berada pada posisi yang adjacent dengan {places[place]} ({place})")
+    # Cek ke atas
+        elif x - 1 >= 0 and self.map_data[x - 1][y] in places:
+           place = self.map_data[x - 1][y]
+           print(f"Agent Purry akan mengakses {places[place]}, karena berada pada posisi yang adjacent dengan {places[place]} ({place})")
+        else:
+           print("Agent Purry tidak berada di area khusus!")
+
+
+def Peta_Kota_Danville():
+    # Membaca peta kota Danville
+    map_string = """
+************
+*          *
+*   S  X   *
+*      X   *
+*      X L *
+* X  XXX   *
+* X        *
+* X        *
+* XXX   A  *
+*          *
+*    XXXXX *
+************
+"""
+    # Membuat objek peta
+    map_data = [list(line) for line in ManualSplit(map_string, '\n') if line]
+    peta = Map(map_data)
+
+    while True:
+        # Menampilkan peta
+        peta.print_map()
+
+        # Menampilkan posisi Agent
+        print(f"Agent Purry di posisi: {peta.agent.position}")
+
+        # Mengecek apakah Agent berada di area khusus
+        peta.check_location()
+
+        # Menerima input navigasi dari user
+        direction = input("Mau ke arah mana? (W/S/A/D/STOP): ")
+
+        # Melakukan navigasi
+        peta.move(direction)
+
+        # Kalau dia mau berhenti
+        if direction.upper() == "STOP":
+            X = input("Mau melakukan apa? (HELP/END) ")
+            if X == "END":
+                break
+            elif X == "HELP":
+                print("...")
+                print("W: Ke atas (Utara)\nS: Ke bawah (Selatan)\nA: Ke kiri (Barat)\nD: Ke kanan (Timur)\nEND: Keluar dari permainan")
+                print("...")
+            else:
+                print("Melanjutkan perjalanan Agent...")
