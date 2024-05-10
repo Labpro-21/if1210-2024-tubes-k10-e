@@ -27,8 +27,7 @@
 
 def BerikanData(informasi):
     data = []
-    with open(informasi, "r", newline="") as csvfile:
-        next(csvfile)  # Lewati baris header
+    with open(informasi, "r", newline="") as csvfile: # buka informasi
         line = ""  # String kosong untuk menyimpan setiap baris
         char = csvfile.read(1)  # Baca karakter pertama dari file
         while char:  # Loop sampai karakter terakhir terbaca
@@ -50,19 +49,18 @@ def BerikanData(informasi):
             else:
                 line += char  # Tambahkan karakter ke string line
             char = csvfile.read(1)  # Baca karakter selanjutnya dari file
+    print(data)
     return data
 
 # Fungsi untuk menyimpan data ke CSV dengan menambahkan satu kolom dari belakang setiap kali dapat data baru
 def SimpanData(data):
+  
     # Tulis data yang sudah diperbarui ke file CSV
     with open("user.csv", "w") as csvfile:
         for row in data:
             # Konversi setiap elemen dalam list menjadi string
             row = [str(item) for item in row]
             csvfile.write(";".join(row) + "\n")
-
-
-
 
 # Registrasi
 def Registrasi(data, monster_data):
@@ -154,7 +152,7 @@ def PilihMonster(monster_data):
         while pilihan != "1" and pilihan != "2" and pilihan != "3" and pilihan != "4" and pilihan != "5":
           pilihan = input("Monster Pilihanmu: ")
           if pilihan != "1" and pilihan != "2" and pilihan != "3" and pilihan != "4" and pilihan != "5":
-            print("Ulangi Input!") 
+            print("Ulangi Input!")
         b = int(pilihan)
         if pilihan.isdigit() and 1 <= int(pilihan) <= len(monster_data) - 1:
           monster_id = int(pilihan)
@@ -393,8 +391,11 @@ def PilihMonster(monster_data):
           a = input("Kamu yakin memilih monster ini? (y/n) ")
           if a == "y":
             return int(pilihan)
+          elif a == "n":
+            print("Silahkan Pilih lagi!")
+            print()
           else:
-            print("Silakan pilih lagi!")
+            print("invalid input, pilih lagi!!")
         else:
             print("ID monster tidak valid. Silakan pilih lagi!")
 
