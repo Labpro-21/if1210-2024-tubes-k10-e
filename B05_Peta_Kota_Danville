@@ -1,64 +1,62 @@
 from A_Functions import ManualSplit
 
-# OOP on the Agent and the Map!
-class Agent:
-    def __init__(self, name, position):
-        self.name = name
-        self.position = position   
-class Map:
-    def __init__(self, map_data):
-        self.map_data = map_data
-        self.agent = Agent("Purry", (1, 1))
+# Fungsi untuk inisialisasi agen
+def create_agent(name, position):
+    return {"name": name, "position": position}
 
-# Ubah string agar bisa dibaca sistem!
-    def print_map(self):
-        for i in range(len(self.map_data)):
-            for j in range(len(self.map_data[i])):
-                if (i, j) == self.agent.position:
-                    print('P', end='')
-                else:
-                    print(self.map_data[i][j], end='')
-            print()
+# Fungsi untuk inisialisasi peta
+def create_map(map_data):
+    agent = create_agent("Purry", (1, 1))  # Agen dimulai dari posisi (1, 1)
+    return {"map_data": map_data, "agent": agent}
 
-    def move(self, direction):
-        x, y = self.agent.position
-        direction = direction.lower()  # Mengubah input menjadi lowercase
-        if direction == "w" and x > 0 and self.map_data[x-1][y] not in ['*', 'X', 'L', 'A', 'S']:
-            self.agent.position = (x-1, y)
-        elif direction == "s" and x < len(self.map_data)-1 and self.map_data[x+1][y] not in ['*', 'X', 'L', 'A', 'S']:
-            self.agent.position = (x+1, y)
-        elif direction == "a" and y > 0 and self.map_data[x][y-1] not in ['*', 'X', 'L', 'A', 'S']:
-            self.agent.position = (x, y-1)
-        elif direction == "d" and y < len(self.map_data[0])-1 and self.map_data[x][y+1] not in ['*', 'X', 'L', 'A', 'S']:
-            self.agent.position = (x, y+1)
-        print(f"Agent {self.agent.name} bergerak ke {direction.upper()} ke posisi {self.agent.position}")
+# Fungsi untuk mencetak peta
+def print_map(map_data, agent_position):
+    for i in range(len(map_data)):
+        for j in range(len(map_data[i])):
+            if (i, j) == agent_position:
+                print('P', end='')  # Cetak 'P' jika posisi sama dengan posisi agen
+            else:
+                print(map_data[i][j], end='')  # Cetak karakter peta
+        print()
 
-    def check_location(self):
-        x, y = self.agent.position
-        places = {'S': 'Shop', 'A': 'Arena', 'L': 'Laboratory', 'X': 'Bush'}
+# Fungsi untuk memindahkan agen
+def move_agent(map_data, agent_position, direction):
+    x, y = agent_position
+    direction = direction.lower()
+    # Periksa batasan peta dan rintangan sebelum memindahkan agen
+    if direction == "w" and x > 0 and map_data[x - 1][y] not in ['*', 'X', 'L', 'A', 'S']:
+        return x - 1, y
+    elif direction == "s" and x < len(map_data) - 1 and map_data[x + 1][y] not in ['*', 'X', 'L', 'A', 'S']:
+        return x + 1, y
+    elif direction == "a" and y > 0 and map_data[x][y - 1] not in ['*', 'X', 'L', 'A', 'S']:
+        return x, y - 1
+    elif direction == "d" and y < len(map_data[0]) - 1 and map_data[x][y + 1] not in ['*', 'X', 'L', 'A', 'S']:
+        return x, y + 1
+    else:
+        return agent_position
 
-    # Cek ke kanan
-        if y + 1 < len(self.map_data[0]) and self.map_data[x][y + 1] in places:
-          place = self.map_data[x][y + 1]
-          print(f"Agent Purry akan mengakses {places[place]}, karena berada pada posisi yang adjacent dengan {places[place]} ({place})")
-    # Cek ke kiri
-        elif y - 1 >= 0 and self.map_data[x][y - 1] in places:
-          place = self.map_data[x][y - 1]
-          print(f"Agent Purry akan mengakses {places[place]}, karena berada pada posisi yang adjacent dengan {places[place]} ({place})")
-    # Cek ke bawah
-        elif x + 1 < len(self.map_data) and self.map_data[x + 1][y] in places:
-           place = self.map_data[x + 1][y]
-           print(f"Agent Purry akan mengakses {places[place]}, karena berada pada posisi yang adjacent dengan {places[place]} ({place})")
-    # Cek ke atas
-        elif x - 1 >= 0 and self.map_data[x - 1][y] in places:
-           place = self.map_data[x - 1][y]
-           print(f"Agent Purry akan mengakses {places[place]}, karena berada pada posisi yang adjacent dengan {places[place]} ({place})")
-        else:
-           print("Agent Purry tidak berada di area khusus!")
+# Fungsi untuk memeriksa lokasi sekitar agen
+def check_location(map_data, agent_position):
+    x, y = agent_position
+    places = {'S': 'Shop', 'A': 'Arena', 'L': 'Laboratorium', 'X': 'Semak'}
+    adjacent_places = []
+    # Periksa lokasi sekitar agen untuk area khusus
+    if y + 1 < len(map_data[0]) and map_data[x][y + 1] in places:
+        adjacent_places.append(map_data[x][y + 1])
+    if y - 1 >= 0 and map_data[x][y - 1] in places:
+        adjacent_places.append(map_data[x][y - 1])
+    if x + 1 < len(map_data) and map_data[x + 1][y] in places:
+        adjacent_places.append(map_data[x + 1][y])
+    if x - 1 >= 0 and map_data[x - 1][y] in places:
+        adjacent_places.append(map_data[x - 1][y])
+    if adjacent_places:
+        print(f"Agen Purry akan mengakses {', '.join([places[place] for place in adjacent_places])}, karena berada pada posisi yang bersebelahan dengan {', '.join(adjacent_places)}")
+    else:
+        print("Agen Purry tidak berada di area khusus!")
 
-
-def Peta_Kota_Danville():
-    # Membaca peta kota Danville
+# Fungsi utama untuk menjalankan permainan
+def peta_kota_danville():
+    # Membaca data peta
     map_string = """
 ************
 *          *
@@ -73,34 +71,33 @@ def Peta_Kota_Danville():
 *    XXXXX *
 ************
 """
-    # Membuat objek peta
-    map_data = [list(line) for line in ManualSplit(map_string, '\n') if line]
-    peta = Map(map_data)
+    map_data = [list(line) for line in manual_split(map_string, '\n') if line]
+
+    agent_position = (1, 1)  # Mulai agen dari posisi (1, 1)
 
     while True:
-        # Menampilkan peta
-        peta.print_map()
+        # Cetak peta
+        print_map(map_data, agent_position)
 
-        # Menampilkan posisi Agent
-        print(f"Agent Purry di posisi: {peta.agent.position}")
+        # Cetak posisi agen
+        print(f"Agen Purry di posisi: {agent_position}")
 
-        # Mengecek apakah Agent berada di area khusus
-        peta.check_location()
+        # Periksa apakah agen berada di area khusus
+        check_location(map_data, agent_position)
 
-        # Menerima input navigasi dari user
+        # Dapatkan input dari pengguna untuk navigasi
         direction = input("Mau ke arah mana? (W/S/A/D/STOP): ")
 
-        # Melakukan navigasi
-        peta.move(direction)
+        # Pindahkan agen
+        if direction.upper() != "STOP":
+            agent_position = move_agent(map_data, agent_position, direction)
 
-        # Kalau dia mau berhenti
-        if direction.upper() == "STOP":
-            X = input("Mau melakukan apa? (HELP/END) ")
-            if X == "END":
+        # Periksa apakah pengguna ingin mengakhiri permainan
+        else:
+            action = input("Mau melakukan apa? (HELP/END) ")
+            if action.upper() == "END":
                 break
-            elif X == "HELP":
-                print("...")
+            elif action.upper() == "HELP":
                 print("W: Ke atas (Utara)\nS: Ke bawah (Selatan)\nA: Ke kiri (Barat)\nD: Ke kanan (Timur)\nEND: Keluar dari permainan")
-                print("...")
             else:
-                print("Melanjutkan perjalanan Agent...")
+                print("Melanjutkan perjalanan.")
