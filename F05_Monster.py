@@ -13,13 +13,13 @@ def NaikLevel(monster_data: dict) -> dict:
     return monster_data
 
 
-def Attack(monster_id: dict) -> int:
-    damage = monster_id['atk_power'] * (130-RNG(60))/100
+def Attack(monster_atk: int) -> int:
+    damage = monster_atk * (130-RNG(60))/100
     # Mengeluarkan damage dealt oleh monster
     return damage
 
 
-def Defend(monster_id: dict) -> float:
-    damage_reduction = RNG(monster_id)/100
+def Defend(monster_def: int) -> float:
+    damage_reduction = RNG(monster_def)/100
     # Mengeluarkan presentase damage reduction
     return damage_reduction
