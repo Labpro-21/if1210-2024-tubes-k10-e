@@ -4,13 +4,13 @@ from src.F10_Shop_Currency import *
 def ShopManagement(bigdata):
     while True:
     
-        action = input(">>> Pilih aksi (lihat/tambah/ubah/hapus/keluar): ")
+        action = input("Pilih aksi (lihat/tambah/ubah/hapus/keluar)\n>>> ")
         if action == 'lihat':
-            item_type = input("monster/potion: ")
+            item_type = input("monster / potion: ")
             DisplayItems(bigdata, item_type)
         elif action == 'tambah':
             available_id = []
-            item_type = input("monster/potion: ")
+            item_type = input("monster / potion: ")
             if item_type == 'monster':
                 for i in range(len(bigdata['monster_shop'][1:])):
                     available_id.append(bigdata['monster_shop'][i+1]['monster_id'])
@@ -33,14 +33,13 @@ def ShopManagement(bigdata):
                         'price'         : monster_price
                     }
                     bigdata['monster_shop'].append(add_monster)
-                    print(bigdata['monster_shop'])
             elif item_type == 'potion':
                 # PEER
                 # PEER
                 # PEER
                 continue
         elif action =='ubah':
-            item_type = input("monster/potion:")
+            item_type = input("monster / potion:")
             if item_type == 'monster':
                 DisplayItems(bigdata, item_type)
                 monster_id = int(input("id: "))
@@ -56,7 +55,7 @@ def ShopManagement(bigdata):
                 bigdata['item_shop'][item_id]['stock'] = item_stock
                 bigdata['item_shop'][item_id]['price'] = item_price
         elif action == 'hapus':
-            item_type = input("monster/potion:")
+            item_type = input("monster / potion:")
             DisplayItems(bigdata, item_type)
             if item_type == 'monster':
                 monster_id = int(input("id: "))
@@ -73,5 +72,3 @@ def ShopManagement(bigdata):
                 bigdata['item_shop'][item_id]['stock'] = 0
         elif action == 'keluar':
             return
-
-# ShopManagement(bigdata_example)

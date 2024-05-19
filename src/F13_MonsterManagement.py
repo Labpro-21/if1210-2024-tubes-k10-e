@@ -4,7 +4,7 @@ import typing
 def MonsterManagement(bigdata):
     print("SELAMAT DATANG DI MONSTER MANAGEMENT")
     while True:
-        print("============================")
+        print("\n====================================================")
         print("1. Tampilkan semua Monster")
         print("2. Tambah Monster baru")
         print("3. Keluar")
@@ -17,7 +17,7 @@ def MonsterManagement(bigdata):
                 print("Oops, input salah!")
 
         if choice == 1:
-            print("ID | Type           | ATK Power | DEF Power | HP   ")
+            print("\nID | Type           | ATK Power | DEF Power | HP   ")
             print("====================================================")
             for monster in bigdata['monster'][1:]:
                 print(f"{monster['id']:>2} | {monster['type']:<14} | {monster['atk_power']:>9} | {monster['def_power']:>9} | {monster['hp']:>4}")
@@ -70,8 +70,9 @@ def MonsterManagement(bigdata):
                 confirmation = input(">>> Tambahkan Monster ke database (Y/N): ")
                 if confirmation == 'Y':
                     bigdata['monster'].append(new_monster)
-                    print(bigdata['monster'])
                 elif confirmation == 'N':
                     print("Monster gagal ditambahkan")
         elif choice == 3:
             return bigdata
+        else:
+            ClearScreen()

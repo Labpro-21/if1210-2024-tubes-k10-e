@@ -38,7 +38,6 @@ def main():
     print(text_ascii['welcome'])
     LoopBreaker = True
     while (LoopBreaker == True):
-
         choice = input(">>> ").upper()
         if choice == "REGISTER":
             ClearScreen()
@@ -57,7 +56,7 @@ def main():
                         elif condition == "Semak":
                             bigdata['user'][user_data['user_id']]['oc'] = Battle(bigdata, user_id=user_data["user_id"])
                         elif condition == "Arena":
-                            Arena(bigdata, user_id=user_data['user_id'])
+                            bigdata['user'][user_data['user_id']]['oc'] = Arena(bigdata, user_id=user_data['user_id'])
                         elif condition == "Inventory":
                             ShowInventory(bigdata, user_id=user_data['user_id'])
                         elif (condition == "Shop") and (user_data['role'] == 'agent'):

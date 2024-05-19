@@ -4,7 +4,7 @@ from src.F08_Battle import *
 import typing
 
 
-def Arena(bigdata, user_id):
+def Arena(bigdata: dict, user_id: int) -> int:
     # Initialize
     ClearScreen()
     print(text_ascii['arena'])
@@ -46,3 +46,4 @@ def Arena(bigdata, user_id):
     print(f"Damage dealt    : {total_damage_dealt}")
     print(f"damage received : {total_damage_received}")
     time.sleep(5)
+    return total_oc

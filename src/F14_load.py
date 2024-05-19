@@ -33,7 +33,7 @@ def Load():
                 time.sleep(0.5)
             print()
         #membuat bigdata
-            bigdata : dict = {"user" : [],
+            bigdata : dict = {'user' : [],
                               'monster': [],
                               'monster_shop' :[],
                               'monster_inventory':[],
