@@ -2,7 +2,8 @@ from src.A_Functions import *
 import typing
 
 def MonsterManagement(bigdata):
-    print("SELAMAT DATANG DI MONSTER MANAGEMENT")
+    ClearScreen()
+    print(text_ascii['monster'])
     while True:
         print("\n====================================================")
         print("1. Tampilkan semua Monster")

@@ -16,6 +16,8 @@ def ShowInventory(bigdata, user_id) -> None:
     data_monster = inventory['monster']
     data_item = inventory['item']
     counter = 1
+    ClearScreen()
+    print(text_ascii['inventory'])
 
     inventory_2 = []
     for i in range(len(data_monster)):

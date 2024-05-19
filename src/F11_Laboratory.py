@@ -6,6 +6,8 @@ def Laboratory(bigdata, user_id):
     # Initialize
     cost = [100, 300, 600, 1000]
     user_oc = bigdata['user'][user_id]['oc']
+    ClearScreen()
+    print(text_ascii['laboratory'])
 
     # print all monster
     user_monster = UserInventory(user_id, bigdata, 'monster_inventory')
@@ -25,6 +27,10 @@ def Laboratory(bigdata, user_id):
 
     # input monster
     choice = int(input("Monster ID\n>>> ")) - 1
+    if choice > len(user_monster):
+        print("Oops, input anda salah")
+        time.sleep(2)
+        return bigdata
     monster = user_monster[choice]
     upgrade_cost = cost[monster['level'] -1 ]
     if monster['level'] == 5:
@@ -36,8 +42,8 @@ def Laboratory(bigdata, user_id):
         if confirmation == "Y" and user_oc >= upgrade_cost:
             monster['level'] += 1
             bigdata['user'][user_id]['oc'] -= upgrade_cost
-            print("selamat")
+            print("selamat kamu berhasil upgrade monstermu!")
         else:
             print("tidak berhasil")
-        print(bigdata['user'][user_id])
+    time.sleep(3)
     return bigdata

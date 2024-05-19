@@ -2,9 +2,10 @@ from src.A_Functions import *
 from src.F10_Shop_Currency import *
 
 def ShopManagement(bigdata):
+    ClearScreen()
+    print(text_ascii['shop_management'])
     while True:
-    
-        action = input("Pilih aksi (lihat/tambah/ubah/hapus/keluar)\n>>> ")
+        action = input("\nPilih aksi (lihat/tambah/ubah/hapus/keluar)\n>>> ")
         if action == 'lihat':
             item_type = input("monster / potion: ")
             DisplayItems(bigdata, item_type)
@@ -71,4 +72,4 @@ def ShopManagement(bigdata):
                 item_id = int(input("id: "))
                 bigdata['item_shop'][item_id]['stock'] = 0
         elif action == 'keluar':
-            return
+            return bigdata
