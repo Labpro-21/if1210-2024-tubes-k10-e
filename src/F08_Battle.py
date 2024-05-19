@@ -88,19 +88,22 @@ def Battle(bigdata: dict, user_id: int, in_arena: bool = False, level_setting: i
     for monster in user_monster_pool:
         print(f"{id_count}. {MonsterDetail(bigdata, monster['monster_id'], monster['level'])['type']}")
         id_count += 1
+    if not in_arena:
+        print(f"{id_count}. Keluar")
 
     # Memilih monster yang akan digunakan
     while True:
-        user_choice = (input("\nPilih monster untuk bertarung: "))
-        if user_choice.isdigit():
-            user_choice = int(user_choice)
-            if user_choice > len(user_monster_pool):
-                print("Pilihan nomor tidak tersedia!")
-            else:
-                user_choice -= 1
-                ClearScreen()
-                break
-    
+        user_choice = InputVerifier("\nPilih monster untuk bertarung")
+        user_choice = int(user_choice)
+        if user_choice == id_count and not in_arena:
+            return 0
+        elif user_choice > len(user_monster_pool):
+            print("Pilihan nomor tidak tersedia!")
+        else:
+            user_choice -= 1
+            ClearScreen()
+            break
+
     # Mendapatkan data monster user
     user_monster_level = user_monster_pool[user_choice]['level']
     user_monster = dict(next((m for m in bigdata['monster'] if m['id'] == user_monster_pool[user_choice]['monster_id']), None))
@@ -148,9 +151,9 @@ def Battle(bigdata: dict, user_id: int, in_arena: bool = False, level_setting: i
 
             # Processing Other Turn
             time.sleep(RNG(2))
-            print("\n",text_ascii['vs'])
-
-            PrintMonster(side="player", monster_data=user_monster, monster_level=user_monster_level)
+            ClearScreen()
+            print(f"============ TURN {turn_count} - {user_monster['type']} ============")
+            MonsterBattle(ascii_1=monster_ascii[monster_appear['type']], ascii_2=monster_ascii[user_monster['type']], detail_1=monster_appear, detail_2=user_monster, level_1=monster_appear_level, level_2=user_monster_level)
             turn_count += 1
         
         # Jika pilihan potion dan belum menggunakan potion
@@ -169,16 +172,24 @@ def Battle(bigdata: dict, user_id: int, in_arena: bool = False, level_setting: i
         # Jika memilih Monster Ball di luar arena
         elif choice == "3" and not in_arena:
             monster_before = len(user_monster_pool)
-
-            MonsterBall(user_monster_pool, user_id, monster_appear_id, monster_appear_level)
-
-            monster_after = len(user_monster_pool)
-
-            # Berhasil menangkap Monster
-            if monster_after > monster_before:
-                break
+            amount_monsterball = next((i for i in bigdata['item_inventory'] if (i['user_id'] == user_id) and (i['type'] == 'monsterball')), None)
+            if amount_monsterball and (amount_monsterball['quantity'] > 0):
+                MonsterBall(user_monster_pool, user_id, monster_appear_id, monster_appear_level)
+                amount_monsterball['quantity'] -= 1
+                monster_after = len(user_monster_pool)
+                # Berhasil menangkap Monster
+                if monster_after > monster_before:
+                    monster_catched_data = {
+                        'user_id'   : user_id,
+                        'monster_id': monster_appear_id,
+                        'level'     : monster_appear_level
+                    }
+                    bigdata['monster_inventory'].append(monster_catched_data)
+                    break
+                else:
+                    PrintMonster(side="player", monster_data=user_monster, monster_level=user_monster_level)
             else:
-                PrintMonster(side="player", monster_data=user_monster, monster_level=user_monster_level)
+                print("Anda tidak mempunyai monsterball.")
 
         # Exit battle
         elif (choice == "4" and not in_arena) or (choice =="3" and in_arena):

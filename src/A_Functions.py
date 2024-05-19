@@ -1,5 +1,6 @@
 import typing
 import os
+from src.A_AddOns import *
 
 
 def ManualSplit(list: list, separator: str) -> list[str]:
@@ -63,7 +64,7 @@ def InputVerifier(message: str) -> int:
         else:
             print("Oops, input salah!\n")
 
-def MonsterBattle(ascii_1, ascii_2):
+def MonsterBattle(ascii_1, ascii_2, detail_1, detail_2, level_1, level_2):
     def SplitRow(ascii_art):
       lines = []
       current_line = []
@@ -97,9 +98,18 @@ def MonsterBattle(ascii_1, ascii_2):
 
     for i in range(length):
         print((ascii_1[i]), (vs_ascii[i]), (ascii_2[i]))
+        temp_len = len(ascii_1[i])
+        temp_len_2 = len(ascii_2[i])
+    print()
+    print("=" * temp_len, " " * 28, "=" *temp_len_2)
+    print(f"       Name      : {detail_1['type']}", " " * (temp_len - len(detail_1['type']) + 21), f"Name       : {detail_2['type']}")
+    print(f"       ATK Power : {detail_1['atk_power']}", " " * (temp_len - len(str(detail_1['atk_power'])) + 21), f"ATK Power  : {detail_2['atk_power']}")
+    print(f"       DEF Power : {detail_1['def_power']}", " " * (temp_len - len(str(detail_1['def_power'])) + 21), f"DEF Power  : {detail_2['def_power']}")
+    print(f"       HP        : {detail_1['hp']}", " " * (temp_len - len(str(detail_1['hp'])) + 21), f"HP         : {detail_2['hp']}")
+    print(f"       Level     : {level_1}", " " * (temp_len + 20), f"Level      : {level_2}")
     return
 
-# MonsterBattle(monster_ascii['Pikachow'], monster_ascii['Zuko'])
+# MonsterBattle(monster_ascii['Chacha'], monster_ascii['Zuko'], detail_1={'id': 1, 'type': 'Pikachow', 'atk_power': 125, 'def_power': 10, 'hp': 600}, detail_2={'id': 2, 'type': 'Bulbu', 'atk_power': 50, 'def_power': 50, 'hp': 1200}, level_1=1, level_2=1)
 
 
 def ManualJoin(words: list, separator: str) -> str:
