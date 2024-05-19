@@ -1,4 +1,5 @@
 # MAIN
+# # Main merupakan program utama yang menerima input perintah lalu menjalankan fungsi berdasarkan perintah yang diinput
 from src.A_Functions import *
 from src.B05_Peta_Kota_Danville import *
 from src.F00_RNG import *
@@ -20,6 +21,7 @@ from src.F15_Save import *
 from src.F16_Exit import * 
 
 import typing
+# * =- Import semuanya
 
 def main():
     user_data: dict = {"user_id"  : None,
@@ -33,7 +35,8 @@ def main():
 
     ClearScreen()
     print(text_ascii['welcome'])
-    while True:
+    LoopBreaker = True
+    while (LoopBreaker == True):
 
         choice = input(">>> ").upper()
         if choice == "REGISTER":
@@ -78,6 +81,15 @@ def main():
         elif choice == "HELP":
             ClearScreen()
             Help2(user_data)
+        elif choice == "EXIT":
+            ClearScreen()
+            LoopBreaker = False
+            print("Apakah anda ingin melakukan penyimpanan?")
+            ans = input(("Y/N: "))
+            if(ans == "N"):
+                print("Terima kasih karena anada telah memainkan game ini! Sampai jumpa! ╲⎝⧹ ( ͡° ͜ʖ ͡°) ⎠╱")
+            elif(ans == "Y"):
+                save(bigdata)
         elif choice == "LOGOUT":
             if logout(login_state= user_data["status"]):
                 user_data = {"user_id"  : None,
