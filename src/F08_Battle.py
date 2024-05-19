@@ -47,6 +47,7 @@ def MonsterAppear(monster_pool: dict) -> tuple[int, int]:
 
     # Menentukan monster appear dari RNG
     monster_appear_id    = RNG(len(monster_pool))
+    time.sleep(1)
     monster_appear_level = RNG(5)
 
     return monster_appear_id, monster_appear_level
@@ -54,13 +55,13 @@ def MonsterAppear(monster_pool: dict) -> tuple[int, int]:
 def Battle(bigdata: dict, user_id: int, in_arena: bool = False, level_setting: int = None):
     # Initialize
     ClearScreen()
-    monster_pool          = bigdata['monster'][1:]
+    monster_pool   : list = bigdata['monster'][1:]
     exit_battle    : bool = False
+    win_battle     : bool = False
+    used_potion    : bool = False
     damage_dealt   : int  = 0
     damage_received: int  = 0
-    used_potion    : bool = False
     turn_count     : int  = 1
-    win_battle     : bool = False
     oc_gain        : int  = 0
 
     # Monster Musuh

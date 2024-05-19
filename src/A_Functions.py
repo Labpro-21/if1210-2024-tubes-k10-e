@@ -109,3 +109,7 @@ def ManualJoin(words: list, separator: str) -> str:
             result += separator
         result += item
     return result
+
+
+def Coloredtext(text: str, color_code: int) -> str:
+    return f"\033[1;{color_code}m{text}\033[0m"

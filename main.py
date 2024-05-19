@@ -55,7 +55,7 @@ def main():
                         if condition == "End":
                             break
                         elif condition == "Semak":
-                            oc_gain = Battle(bigdata, user_id=user_data["user_id"])
+                            bigdata['user'][user_data['user_id']]['oc'] = Battle(bigdata, user_id=user_data["user_id"])
                         elif condition == "Arena":
                             Arena(bigdata, user_id=user_data['user_id'])
                         elif condition == "Inventory":

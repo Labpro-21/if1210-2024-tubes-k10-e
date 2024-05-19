@@ -1,27 +1,25 @@
 from src.A_Functions import *
 from src.F00_RNG import *
+import typing
 
-# Fungsi untuk inisialisasi agen
-def create_agent(name, position):
-    return {"name": name, "position": position}
-
-# Fungsi untuk inisialisasi peta
-def create_map(map_data):
-    agent = create_agent("Purry", (1, 1))  # Agen dimulai dari posisi (1, 1)
-    return {"map_data": map_data, "agent": agent}
 
 # Fungsi untuk mencetak peta
-def print_map(map_data, agent_position):
+def PrintMap(map_data: list, agent_position: tuple[int, int]) -> None:
     for i in range(len(map_data)):
         for j in range(len(map_data[i])):
             if (i, j) == agent_position:
-                print('P', end=' ')  # Cetak 'P' jika posisi sama dengan posisi agen
+                print(Coloredtext('P', 34), end=' ')  # Cetak 'P' jika posisi sama dengan posisi agen
             else:
-                print(map_data[i][j], end=' ')  # Cetak karakter peta
+                # Cetak karakter peta
+                if map_data[i][j] == 'X':
+                    print(Coloredtext('X', 32), end=' ')
+                elif map_data[i][j] == '*':
+                    print(Coloredtext('*', 30), end=' ')
+                else: print(map_data[i][j], end=' ')
         print()
 
 # Fungsi untuk memindahkan agen
-def move_agent(map_data, agent_position, direction):
+def MoveAgent(map_data, agent_position, direction) -> tuple[int, int]:
     x, y = agent_position
     direction = direction.lower()
     # Periksa batasan peta dan rintangan sebelum memindahkan agen
@@ -37,10 +35,10 @@ def move_agent(map_data, agent_position, direction):
         return agent_position
 
 # Fungsi untuk memeriksa lokasi sekitar agen
-def check_location(map_data, agent_position):
+def CheckLocation(map_data: list, agent_position: tuple[int, int]) -> str:
     x, y = agent_position
-    places = {'S': 'Shop', 'A': 'Arena', 'L': 'Laboratorium', 'X': 'Semak', 'M': 'Minigame'}
-    adjacent_places = []
+    places: dict = {'S': 'Shop', 'A': 'Arena', 'L': 'Laboratorium', 'X': 'Semak', 'M': 'Minigame'}
+    adjacent_places: list = []
     # Periksa lokasi sekitar agen untuk area khusus
     if y + 1 < len(map_data[0]) and map_data[x][y + 1] in places:
         adjacent_places.append(map_data[x][y + 1])
@@ -64,7 +62,7 @@ def check_location(map_data, agent_position):
         print("Agen Purry tidak berada di area khusus!")
         return "nothing"
 # Fungsi utama untuk menjalankan permainan
-def peta_kota_danville(agent_position: type = (1, 1)):
+def peta_kota_danville(agent_position: type = (1, 1)) -> tuple[str, tuple[int, int]]:
     # Membaca data peta
     map_string = """
 ************
@@ -86,17 +84,17 @@ def peta_kota_danville(agent_position: type = (1, 1)):
         location = "nothing"
         # Cetak peta
         ClearScreen()
-        print_map(map_data, agent_position)
+        PrintMap(map_data, agent_position)
         print()
 
         # Cetak posisi agen
         print(f"Agen Purry di posisi: {agent_position}")
 
         # Periksa apakah agen berada di area khusus
-        location = check_location(map_data, agent_position)
+        location: str = CheckLocation(map_data, agent_position)
         
         # Dapatkan input dari pengguna untuk navigasi
-        direction = input("Mau ke arah mana? (W/S/A/D/STOP)\n>>> ")
+        direction: str = input("Mau ke arah mana? (W/S/A/D/STOP)\n>>> ")
 
         if direction.upper() == "INVENTORY":
             return "Inventory", agent_position
@@ -109,7 +107,7 @@ def peta_kota_danville(agent_position: type = (1, 1)):
 
         # Pindahkan agen
         if direction.upper() != "STOP":
-            agent_position = move_agent(map_data, agent_position, direction)
+            agent_position = MoveAgent(map_data, agent_position, direction)
         
         # Periksa apakah pengguna ingin mengakhiri permainan
         else:
@@ -120,7 +118,3 @@ def peta_kota_danville(agent_position: type = (1, 1)):
                 print("W: Ke atas (Utara)\nS: Ke bawah (Selatan)\nA: Ke kiri (Barat)\nD: Ke kanan (Timur)\nEND: Keluar dari permainan")
             else:
                 print("Melanjutkan perjalanan.")
-
-# Pengujian
-# if __name__ == "__main__":
-#     peta_kota_danville()
