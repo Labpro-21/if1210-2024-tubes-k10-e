@@ -1,6 +1,7 @@
 # MAIN
 # # Main merupakan program utama yang menerima input perintah lalu menjalankan fungsi berdasarkan perintah yang diinput
 from src.A_Functions import *
+from src.B04_Minigame import *
 from src.B05_Peta_Kota_Danville import *
 from src.F00_RNG import *
 from src.F01_Register import *
@@ -67,6 +68,8 @@ def main():
                             bigdata = Laboratory(bigdata, user_id=user_data['user_id'])
                         elif (condition == "Monster") and (user_data['role'] == 'admin'):
                             bigdata = MonsterManagement(bigdata)
+                        elif (condition == "Minigame"):
+                            bigdata = Minigame(bigdata, user_id=user_data['user_id'])
                         elif (condition == "Logout"):
                             logout(user_data['status'])
                             user_data = {"user_id"  : None,
@@ -87,7 +90,7 @@ def main():
             print("Apakah anda ingin melakukan penyimpanan?")
             ans = input(("Y/N: "))
             if(ans == "N"):
-                print("Terima kasih karena anada telah memainkan game ini! Sampai jumpa! ╲⎝⧹ ( ͡° ͜ʖ ͡°) ⎠╱")
+                print("Terima kasih karena anda telah memainkan game ini! Sampai jumpa! ╲⎝⧹ ( ͡° ͜ʖ ͡°) ⎠╱")
             elif(ans == "Y"):
                 save(bigdata)
         elif choice == "LOGOUT":

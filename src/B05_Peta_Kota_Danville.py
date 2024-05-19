@@ -39,7 +39,7 @@ def move_agent(map_data, agent_position, direction):
 # Fungsi untuk memeriksa lokasi sekitar agen
 def check_location(map_data, agent_position):
     x, y = agent_position
-    places = {'S': 'Shop', 'A': 'Arena', 'L': 'Laboratorium', 'X': 'Semak'}
+    places = {'S': 'Shop', 'A': 'Arena', 'L': 'Laboratorium', 'X': 'Semak', 'M': 'Minigame'}
     adjacent_places = []
     # Periksa lokasi sekitar agen untuk area khusus
     if y + 1 < len(map_data[0]) and map_data[x][y + 1] in places:
@@ -77,7 +77,7 @@ def peta_kota_danville(agent_position: type = (1, 1)):
 * X        *
 * XXX   A  *
 *          *
-*    XXXXX *
+* M  XXXXX *
 ************
 """
     map_data = [list(line) for line in ManualSplit(map_string, '\n') if line]

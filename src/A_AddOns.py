@@ -20,29 +20,31 @@ monster_ascii = {
            :---====:.                        
             -++=-.                           
             .==                              
-             -                                       
+             -                                
+
     """,
 
     'Bulbu'     :"""
-                                   
-                           LDrd.   
-               .irjj2KPqbqE52JBB   
-             :MqjY7Ub21JvYv7:IB7   
-    .jIKv.:..BQ1X1jPEYir7vvri5QQ   
-    RYi7:irjPSi7vi::iMrrr7i7jPMMD  
-   sZ. .PRBBB1i::irirZS7u2XqdXbgZg 
-  :2::5L2gXY:iiirr::rIBdXPqqKq2QSR:
-  SKR7QL.7s:77rrBBb.jsDSDSI5X5UdZ25
- s:Erv::KBB.rY: B BgsYSuQBgXLUXX2SS
-7i Br:iiiuL:r2  B DQ7YUuMQBQBREI5KZ
-IgU5i.:i:::::J  bPqPj211vRQBBgZKDB:
- :BQgI7rvir7Y7U12X5I5dSU1LUU57jBb. 
-   .XBQQqq5qKZQBb1jq1viiiuuL:r7b7  
-     U7IdddPEqEISPB::2i::dQsKBIJQ  
-     dudP7KQDQRPIgI7SQ7:rRrEBBPjB7 
-     rBQM7LjBrYBBBXBv.:7BB7sMQIuB. 
-      Xg2XbB:  rBBMX.rXM:vQd2uSBX  
-       ::::      r::vLr   .r7r7.   
+                                 .-==-.      
+                   ...::-:::::--========     
+                 .::-=====---::::-====*=     
+       :::.     .:-====--:-----======+*+.    
+      :::-:..:----::::..:::==========+*++.   
+    ..::::-=++++=-:::::::::-=========++*++.  
+    .:::---===-:::::::::::::++======++++*++  
+   .:+-:+-::--::::::=+*=::::-=++++++++++*++= 
+  . +-=::::=+-:::::.*+.*=:::-:-=+*++++++*+++ 
+  ..*:=::::::::::: .*=.**-::::=+++**++**++++ 
+ :-:==-:::::::::::  +*+++-:::::=++++=++++++. 
+  --=:-:::-:::::::::::--::::::::====-:=++-   
+   .:=**+===++++***+=+=::::::::::::::::-.    
+      :-========+++=-::---:::::--:----:::    
+        :--------------:::-:::::---+++::::   
+        -+=::---:::::::.--+-:::--:++++--::   
+       ::+=::::::.:---:++:::::--:::==--::.   
+        :-::::::   :-:=+=:::::..:::::::::    
+        .::-::.     .:::::::.   .:-:::::     
+                      .....                  
     """,
 
     'Zeze'      :"""
@@ -175,24 +177,19 @@ text_ascii = {
 
     'welcome':
     """
-                          ████                                                 █████            
-                         ░░███                                                ░░███             
- █████ ███ █████  ██████  ░███   ██████   ██████  █████████████    ██████     ███████    ██████ 
-░░███ ░███░░███  ███░░███ ░███  ███░░███ ███░░███░░███░░███░░███  ███░░███   ░░░███░    ███░░███
- ░███ ░███ ░███ ░███████  ░███ ░███ ░░░ ░███ ░███ ░███ ░███ ░███ ░███████      ░███    ░███ ░███
- ░░███████████  ░███░░░   ░███ ░███  ███░███ ░███ ░███ ░███ ░███ ░███░░░       ░███ ███░███ ░███
-  ░░████░████   ░░██████  █████░░██████ ░░██████  █████░███ █████░░██████      ░░█████ ░░██████ 
-   ░░░░ ░░░░     ░░░░░░  ░░░░░  ░░░░░░   ░░░░░░  ░░░░░ ░░░ ░░░░░  ░░░░░░        ░░░░░   ░░░░░░  
-   
-   
-    ███████    █████   ███   █████   █████████    █████████  
-  ███░░░░░███ ░░███   ░███  ░░███   ███░░░░░███  ███░░░░░███ 
- ███     ░░███ ░███   ░███   ░███  ███     ░░░  ░███    ░███ 
-░███      ░███ ░███   ░███   ░███ ░███          ░███████████ 
-░███      ░███ ░░███  █████  ███  ░███          ░███░░░░░███ 
-░░███     ███   ░░░█████░█████░   ░░███     ███ ░███    ░███ 
- ░░░███████░      ░░███ ░░███      ░░█████████  █████   █████
-   ░░░░░░░         ░░░   ░░░        ░░░░░░░░░  ░░░░░   ░░░░░ 
+██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗      ████████╗ ██████╗  
+██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝      ╚══██╔══╝██╔═══██╗
+██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗           ██║   ██║   ██║   
+██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝           ██║   ██║   ██║   
+╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗         ██║   ╚██████╔╝  
+ ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝         ╚═╝    ╚═════╝  
+                                                                
+ ██████╗ ██╗    ██╗ ██████╗ █████╗ 
+██╔═══██╗██║    ██║██╔════╝██╔══██╗
+██║   ██║██║ █╗ ██║██║     ███████║
+██║   ██║██║███╗██║██║     ██╔══██║
+╚██████╔╝╚███╔███╔╝╚██████╗██║  ██║
+ ╚═════╝  ╚══╝╚══╝  ╚═════╝╚═╝  ╚═╝
    
    """,
    
@@ -215,7 +212,26 @@ text_ascii = {
 ░█▀█░█▀▄░█▀▀░█▀█░█▀█
 ░█▀█░█▀▄░█▀▀░█░█░█▀█
 ░▀░▀░▀░▀░▀▀▀░▀░▀░▀░▀
+""",
+
+    'minigame':
 """
+░█▄█░▀█▀░█▀█░▀█▀░█▀▀░█▀█░█▄█░█▀▀
+░█░█░░█░░█░█░░█░░█░█░█▀█░█░█░█▀▀
+░▀░▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀░▀░▀░▀░▀▀▀
+""",
+
+    'jackpot':
+"""
+░▀▀█░█▀█░█▀▀░█░█░█▀█░█▀█░▀█▀
+░░░█░█▀█░█░░░█▀▄░█▀▀░█░█░░█░
+░▀▀░░▀░▀░▀▀▀░▀░▀░▀░░░▀▀▀░░▀░""",
+
+    'hangman':
+"""
+░█░█░█▀█░█▀█░█▀▀░█▄█░█▀█░█▀█
+░█▀█░█▀█░█░█░█░█░█░█░█▀█░█░█
+░▀░▀░▀░▀░▀░▀░▀▀▀░▀░▀░▀░▀░▀░▀"""
 
 }
 
@@ -239,41 +255,87 @@ def PrintTerrain(type: str):
         print(grass_ascii[RNG(len(grass_ascii))])
     return
 
-def MonsterBattle(ascii_1, ascii_2):
-    def SplitRow(ascii_art):
-      lines = []
-      current_line = []
-      
-      for char in ascii_art:
-          if char == '\n':
-              lines.append(''.join(current_line))
-              current_line = []
-          else:
-              current_line.append(char)
-      
-      # Append the last line if there's no trailing newline
-      if current_line:
-          lines.append(''.join(current_line))
-      return lines
-    
-    ascii_1 = SplitRow(ascii_1)
-    ascii_2 = SplitRow(ascii_2)
-    vs_ascii = SplitRow(text_ascii['vs'])
-    if ascii_1[0] == '':
-        ascii_1 = ascii_1[1:]
-    if ascii_2[0] == '':
-        ascii_2 = ascii_2[1:]
-    if vs_ascii[0] == '':
-        vs_ascii = vs_ascii[1:]
 
-    if len(ascii_1) > len(ascii_2):
-        length = len(ascii_2)
-    else:
-        length = len(ascii_1)
+hangman_stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
 
-    for i in range(length):
-        print((ascii_1[i]), (vs_ascii[i]), (ascii_2[i]))
-    
-    return
-
-MonsterBattle(monster_ascii['Pikachow'], monster_ascii['Zuko'])
+hangman_words = [
+    "buku", "meja", "kursi", "lampu", "pintu", "jendela", "rumah", "kamar",
+    "dapur", "taman", "mobil", "sepeda", "motor", "jalan", "jalanan", "toko",
+    "pasar", "sekolah", "kantor", "gedung", "apartemen", "hotel", "penginapan",
+    "wisata", "pantai", "gunung", "hutan", "sungai", "danau", "laut", "samudra",
+    "pulau", "negara", "kota", "desa", "kampung", "perpustakaan", "museum",
+    "teater", "bioskop", "restoran", "kafe", "warung", "makanan", "minuman",
+    "buah", "sayur", "daging", "ikan", "roti", "kue", "permen", "es krim",
+    "teh", "kopi", "susu", "air", "jus", "soda", "olahraga", "sepakbola",
+    "basket", "tenis", "bulutangkis", "renang", "lari", "bersepeda", "senam",
+    "yoga", "buku", "majalah", "koran", "novel", "komik", "cerita", "puisi",
+    "dongeng", "cerpen", "drama", "musik", "lagu", "instrumen", "piano",
+    "gitar", "biola", "drum", "suling", "saxofon", "orkestra", "band",
+    "kesenian", "tari", "lukis", "gambar", "fotografi", "film", "video",
+    "teater", "drama", "komedi", "tragedi", "aksi", "petualangan", "fiksi",
+    "ilmiah", "romantis", "horor", "misteri", "thriller", "fantasi",
+    "sejarah", "biografi", "otobiografi", "perjalanan", "pesawat", "kereta",
+    "bis", "kapal", "kereta api", "helikopter", "bandara", "stasiun", "terminal",
+    "pelabuhan", "tiket", "koper", "paspor", "visa", "bagasi", "penginapan",
+    "kamar hotel", "wisatawan", "turis", "panduan", "peta", "petualangan",
+    "ekspedisi", "pengalaman", "cerita", "kenangan", "suvenir", "cendera mata",
+    "belanja", "oleh-oleh", "pemandangan", "landmark", "monumen", "patung",
+    "bangunan", "sejarah", "kebudayaan", "tradisi", "festival", "pesta",
+    "perayaan", "ulang tahun", "karnaval", "parade", "upacara", "ritual",
+    "adat", "kebiasaan", "warisan", "tradisional", "modern", "kontemporer"
+]
