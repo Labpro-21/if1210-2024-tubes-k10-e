@@ -401,9 +401,9 @@ hangman_words = [
     "pelabuhan", "tiket", "koper", "paspor", "visa", "bagasi", "penginapan",
     "kamar hotel", "wisatawan", "turis", "panduan", "peta", "petualangan",
     "ekspedisi", "pengalaman", "cerita", "kenangan", "suvenir", "cendera mata",
-    "belanja", "oleh-oleh", "pemandangan", "landmark", "monumen", "patung",
+    "belanja", "pemandangan", "landmark", "monumen", "patung",
     "bangunan", "sejarah", "kebudayaan", "tradisi", "festival", "pesta",
-    "perayaan", "ulang tahun", "karnaval", "parade", "upacara", "ritual",
+    "perayaan", "ulangtahun", "karnaval", "parade", "upacara", "ritual",
     "adat", "kebiasaan", "warisan", "tradisional", "modern", "kontemporer"
 ]
 

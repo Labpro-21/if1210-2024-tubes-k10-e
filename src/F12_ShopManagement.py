@@ -15,14 +15,13 @@ def ShopManagement(bigdata):
             if item_type == 'monster':
                 for i in range(len(bigdata['monster_shop'][1:])):
                     available_id.append(bigdata['monster_shop'][i+1]['monster_id'])
-
                 print("ID | Type           | ATK Power | DEF Power | HP   ")
                 print("====================================================")
                 for monster in bigdata['monster'][1:]:
                     # Displaying unavailable monster
                     if monster['id'] not in available_id:
                         print(f"{monster['id']:>2} | {monster['type']:<14} | {monster['atk_power']:>9} | {monster['def_power']:>9} | {monster['hp']:>4}")
-                monster_id = int(input("Masukkan id monster: "))
+                monster_id = InputVerifier("Masukkan id monster")
                 if monster_id in available_id:
                     print("ID telah ada di shop")
                 else:
@@ -35,9 +34,29 @@ def ShopManagement(bigdata):
                     }
                     bigdata['monster_shop'].append(add_monster)
             elif item_type == 'potion':
-                # PEER
-                # PEER
-                # PEER
+                unavailable_item = []
+                for i in range(1,5):
+                    if bigdata['item_shop'][i]['stock'] == 0:
+                        unavailable_item.append(bigdata['item_shop'][i])
+                if len(unavailable_item) == 0:
+                    print("Semua item sudah ada di shop")
+                else:
+                    print("ID | Type                 | Stok | Harga")
+                    print("=========================================")
+                    counter = 1
+                    for potion in unavailable_item:
+                        print(f"{counter:>2} | {potion['type']:<20} | {potion['stock']:>4} | {potion['price']:>5}")
+                        counter += 1
+                    item_id = InputVerifier("Masukkan id item")
+                    if item_id > len(unavailable_item):
+                        print("Id tidak ada")
+                    else:
+                        item_stock = int(input("Masukkan stock awal: "))
+                        item_price = int(input("Masukkan harga: "))
+                        for j in range(1, 4):
+                            if bigdata['item_shop'][j]['type'] == unavailable_item[item_id-1]['type']:
+                                bigdata['item_shop'][j]['stock'] = item_stock
+                                bigdata['item_shop'][j]['price'] = item_price
                 continue
         elif action =='ubah':
             item_type = input("monster / potion:")
