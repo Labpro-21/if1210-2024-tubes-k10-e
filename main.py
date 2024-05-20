@@ -50,7 +50,7 @@ def main():
                 if user_data['status']:
                     loggedin = True
                     while loggedin:
-                        condition, agent_position = peta_kota_danville(agent_position)
+                        condition, agent_position = peta_kota_danville(bigdata, user_data, agent_position)
                         if condition == "End":
                             break
                         elif condition == "Semak":
@@ -86,8 +86,9 @@ def main():
         elif choice == "EXIT":
             ClearScreen()
             LoopBreaker = False
+            print(text_ascii['exit'])
             print("Apakah anda ingin melakukan penyimpanan?")
-            ans = input(("Y/N: "))
+            ans = input(("Y/N: ")).upper()
             if(ans == "N"):
                 print("Terima kasih karena anda telah memainkan game ini! Sampai jumpa! ╲⎝⧹ ( ͡° ͜ʖ ͡°) ⎠╱")
             elif(ans == "Y"):

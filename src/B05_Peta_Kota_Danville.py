@@ -1,6 +1,8 @@
 from src.A_Functions import *
 from src.F00_RNG import *
+from src.F04_Help import *
 import typing
+import time
 
 
 # Fungsi untuk mencetak peta
@@ -35,7 +37,7 @@ def MoveAgent(map_data, agent_position, direction) -> tuple[int, int]:
         return agent_position
 
 # Fungsi untuk memeriksa lokasi sekitar agen
-def CheckLocation(map_data: list, agent_position: tuple[int, int]) -> str:
+def CheckLocation(map_data: list, agent_position: tuple[int, int], call) -> str:
     x, y = agent_position
     places: dict = {'S': 'Shop', 'A': 'Arena', 'L': 'Laboratorium', 'X': 'Semak', 'M': 'Minigame'}
     adjacent_places: list = []
@@ -50,7 +52,7 @@ def CheckLocation(map_data: list, agent_position: tuple[int, int]) -> str:
         adjacent_places.append(map_data[x - 1][y])
 
     if adjacent_places:
-        print(f"Agen Purry akan mengakses {', '.join([places[place] for place in adjacent_places])}, karena berada pada posisi yang bersebelahan dengan {', '.join(adjacent_places)}")
+        print(f"{call} akan mengakses {', '.join([places[place] for place in adjacent_places])}, karena berada pada posisi yang bersebelahan dengan {', '.join(adjacent_places)}")
         if places[adjacent_places[0]].upper() == 'SEMAK':
             if RNG(5) == 5:
                 return places[adjacent_places[0]]
@@ -59,10 +61,10 @@ def CheckLocation(map_data: list, agent_position: tuple[int, int]) -> str:
         else:
             return places[adjacent_places[0]]
     else:
-        print("Agen Purry tidak berada di area khusus!")
+        print(f"{call} tidak berada di area khusus!")
         return "nothing"
 # Fungsi utama untuk menjalankan permainan
-def peta_kota_danville(agent_position: type = (1, 1)) -> tuple[str, tuple[int, int]]:
+def peta_kota_danville(bigdata, user_data, agent_position = (1,1)) -> tuple[str, tuple[int, int]]:
     # Membaca data peta
     map_string = """
 ************
@@ -87,11 +89,15 @@ def peta_kota_danville(agent_position: type = (1, 1)) -> tuple[str, tuple[int, i
         PrintMap(map_data, agent_position)
         print()
 
+        user_id = user_data['user_id']
+        role = user_data['role']
+        name = user_data['username']
+        call = role + " " + name
         # Cetak posisi agen
-        print(f"Agen Purry di posisi: {agent_position}")
+        print(f"{call} di posisi: {agent_position}")
 
         # Periksa apakah agen berada di area khusus
-        location: str = CheckLocation(map_data, agent_position)
+        location: str = CheckLocation(map_data, agent_position, call)
         
         # Dapatkan input dari pengguna untuk navigasi
         direction: str = input("Mau ke arah mana? (W/S/A/D/STOP)\n>>> ")
@@ -116,5 +122,6 @@ def peta_kota_danville(agent_position: type = (1, 1)) -> tuple[str, tuple[int, i
                 return "Logout", agent_position
             elif action.upper() == "HELP":
                 print("W: Ke atas (Utara)\nS: Ke bawah (Selatan)\nA: Ke kiri (Barat)\nD: Ke kanan (Timur)\nEND: Keluar dari permainan")
+                Help2(user_data)
             else:
                 print("Melanjutkan perjalanan.")
