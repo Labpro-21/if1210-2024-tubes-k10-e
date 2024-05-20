@@ -1,6 +1,6 @@
 from src.A_Functions import *
 from src.F05_Monster import *
-
+import typing
 
 def DisplayMonsterStat(monster_data: dict, monster_level: int) -> None:
     print("Name      :", monster_data["type"])
@@ -12,14 +12,14 @@ def DisplayMonsterStat(monster_data: dict, monster_level: int) -> None:
 
 
 def ShowInventory(bigdata, user_id) -> None:
-    inventory = (InventoryUserDict(bigdata, user_id= user_id))
+    inventory: dict = (InventoryUserDict(bigdata, user_id= user_id))
     data_monster = inventory['monster']
     data_item = inventory['item']
-    counter = 1
+    counter: int = 1
     ClearScreen()
     print(text_ascii['inventory'])
 
-    inventory_2 = []
+    inventory_2: list = []
     for i in range(len(data_monster)):
         temp = ['monster']
         for values in inventory['monster'][i].values():
@@ -74,9 +74,13 @@ def ShowInventory(bigdata, user_id) -> None:
             break
     return
 
-def DetailItem(bigdata, item_id, inventory):
+# Use Case
+# ShowInventory(bigdata, 3)
+
+
+def DetailItem(bigdata: dict, item_id: int, inventory: dict):
     # Mencari value dari tiap item/monster
-    banyak_id = len(inventory)
+    banyak_id: int = len(inventory)
     if 0 < item_id <= banyak_id:
         if inventory[item_id-1][0] == 'monster':
             monster_data = MonsterDetail(bigdata, monster_id=inventory[item_id-1][2], level=inventory[item_id-1][3])
@@ -91,7 +95,7 @@ def DetailItem(bigdata, item_id, inventory):
         print("ID tidak tersedia")
     return
 
-# Ubah InvUserDict AmbilData menjadi read bigdata
+
 def InventoryUserDict(bigdata: dict, user_id: int) -> dict:
     data_monster: list = bigdata['monster_inventory']
     data_item: list = bigdata['item_inventory']
@@ -115,6 +119,5 @@ def UserInventory(user_id: int, bigdata: dict, type: str) -> list:
             list_item.append(temp)
     return list_item
 
-# testing
-# ShowInventory(3)
-# print(UserInventory(3, bigdata_example, 'monster_inventory'))
+# Use Case
+# UserInventory(3, bigdata, 'monster_inventory')

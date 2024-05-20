@@ -1,7 +1,7 @@
 from src.A_Functions import *
 import typing
 
-def MonsterManagement(bigdata):
+def MonsterManagement(bigdata: dict):
     ClearScreen()
     print(text_ascii['monster'])
     while True:
@@ -10,7 +10,7 @@ def MonsterManagement(bigdata):
         print("2. Tambah Monster baru")
         print("3. Keluar")
         while True:
-            choice = input(">>> Pilih Aksi: ")
+            choice: any = input(">>> Pilih Aksi: ")
             if ManualIsDigit(choice):
                 choice = int(choice)
                 break

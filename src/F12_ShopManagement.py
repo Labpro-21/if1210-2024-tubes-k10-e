@@ -59,7 +59,7 @@ def ShopManagement(bigdata):
                                 bigdata['item_shop'][j]['price'] = item_price
                 continue
         elif action =='ubah':
-            item_type = input("monster / potion:")
+            item_type = input("monster / potion: ")
             if item_type == 'monster':
                 DisplayItems(bigdata, item_type)
                 monster_id = int(input("id: "))
@@ -75,7 +75,7 @@ def ShopManagement(bigdata):
                 bigdata['item_shop'][item_id]['stock'] = item_stock
                 bigdata['item_shop'][item_id]['price'] = item_price
         elif action == 'hapus':
-            item_type = input("monster / potion:")
+            item_type = input("monster / potion: ")
             DisplayItems(bigdata, item_type)
             if item_type == 'monster':
                 monster_id = int(input("id: "))
